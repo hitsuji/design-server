@@ -21,7 +21,7 @@ function launchServer(reloadReturned) {
 
     let relaunching = null;
 
-    fs.watch('./public', (evtType, filename) => {
+    const watchHandler = (evtType, filename) => {
         'html js css png jpg'.split(' ').forEach(ext => {
             // there may be multiple events for the same filechange
             // ignore any after the first and relaunch after 10ms.
@@ -38,7 +38,11 @@ function launchServer(reloadReturned) {
                 }, 10);
             }
         });
-    });
+    };
+
+    fs.watch('./public', watchHandler);
+    fs.watch('./public/css', watchHandler);
+    fs.watch('./public/js', watchHandler);
 }
 
 reload(app, { port: reloadPort })

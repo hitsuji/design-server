@@ -2,9 +2,8 @@
   "name": "design",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
   "scripts": {
-    "sass:watch": "sass --watch scss:public/css",
+    "sass:watch": "sass --watch public/scss:public/css",
     "server:start": "node server.js",
     "start": "concurrently \"npm run sass:watch\" \"APP_PORT=$npm_config_port APP_RELOAD_PORT=$npm_config_reload_port npm run server:start\""
   },
